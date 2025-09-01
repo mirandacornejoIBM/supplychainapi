@@ -1,42 +1,36 @@
-Python 3.13.5 (v3.13.5:6cb20a219a8, Jun 11 2025, 12:23:45) [Clang 16.0.0 (clang-1600.0.26.6)] on darwin
-Enter "help" below or click "Help" above for more information.
->>> from fastapi import FastAPI
->>> from pydantic import BaseModel
->>> import pandas as pd
->>> 
->>> app = FastAPI(title="Supply Chain & Sales", version="1.0.0")
->>> df = pd.read_csv("/Users/mirandacornejoahuja/Desktop/supplychaincoe.csv")
->>> class Product(BaseModel):
-...      product_card_id: int
-...      product_name:str
-...      product_price:float
-... 
-...      
->>> class Product(BaseModel):
-...      product_card_id: int
-...      product_name:str
-...      product_price:float
-...      product_category_id: int
-... 
-...      
->>> class Customer(BaseModel):
-...      customer_id:float
-...      customer_city:str
-...      customer_country:str
-...      customer_segment:str | None=None
-...      customer_state:str | None=None
-...      customer_zipcode: str | None=None
-... 
-...      
->>> class Order(BaseModel):
-...     order_id: str
-...     order_customer_id: float
-...     order_date: str
-...     order_item_id: float
-...     order_item_product_price: float
-...     order_item_quantity: int
-...     order_status: str
-... 
+from fastapi import FastAPI
+from pydantic import BaseModel
+import pandas as pd
+
+app = FastAPI(title="Supply Chain & Sales", version="1.0.0")
+df = pd.read_csv("/Users/mirandacornejoahuja/Desktop/supplychaincoe.csv")
+class Product(BaseModel):
+      product_card_id: int
+      product_name:str
+      product_price:float
+     
+class Product(BaseModel):
+      product_card_id: int
+      product_name:str
+      product_price:float
+      product_category_id: int
+      
+class Customer(BaseModel):
+      customer_id:float
+      customer_city:str
+      customer_country:str
+      customer_segment:str | None=None
+      customer_state:str | None=None
+      customer_zipcode: str | None=None
+     
+class Order(BaseModel):
+     order_id: str
+     order_customer_id: float
+     order_date: str
+     order_item_id: float
+     order_item_product_price: float
+     order_item_quantity: int
+     order_status: str 
     
 class Shipment(BaseModel):
     shipping_date: str
